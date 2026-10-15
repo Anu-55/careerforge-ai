@@ -1,0 +1,601 @@
+/* =========================================================
+   HOME PAGE
+========================================================= */
+
+.home-page {
+  min-height: 100vh;
+  margin-left: 286px;
+  padding: 100px 32px 50px;
+  box-sizing: border-box;
+  background: #f6f7fb;
+  font-family: "Roboto", sans-serif;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.home-hero {
+  position: relative;
+  min-height:5vh;
+  width: 100%;
+  margin-bottom: 28px;
+  padding: 25px 38px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+
+  border: 1px solid #e4e7f3;
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      110deg,
+      #eef0ff 0%,
+      #f1edff 48%,
+      #e7f8ff 100%
+    );
+
+  box-shadow: 0 8px 25px rgba(30, 41, 59, 0.05);
+}
+
+.home-hero-content {
+  position: relative;
+  z-index: 2;
+  width: 58%;
+  max-width: 650px;
+}
+
+.home-hero-welcome {
+  margin: 0 0 10px;
+
+  color: #52658f;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.home-hero h1 {
+  margin: 0;
+
+  color: #17203a;
+
+  font-family: "Bree Serif", serif;
+  font-size: 38px;
+  line-height: 1.15;
+}
+
+.home-hero-description {
+  margin: 14px 0 22px;
+
+  color: #64718d;
+
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.home-hero-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 13px 20px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #5146e5;
+  color: white;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.home-hero-button:hover {
+  background: #4338ca;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(79, 70, 229, 0.22);
+}
+
+.home-hero-button svg {
+  font-size: 16px;
+}
+
+.home-hero-arrow {
+  font-size: 18px;
+}
+
+/* =========================================================
+   HERO IMAGE
+========================================================= */
+/* ============================================
+   HERO IMAGE
+============================================ */
+
+.home-hero-image {
+  position: absolute;
+  right: 25px;
+  bottom: 0;
+
+  width: 42%;
+  height: 100%;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  z-index: 1;
+}
+
+.home-hero-image img {
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+
+  object-fit: contain;
+  object-position:  center;
+
+  display: block;
+}
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.home-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+
+  margin-bottom: 28px;
+}
+
+.home-stat-card {
+  padding: 22px;
+
+  border: 1px solid #e6e8f0;
+  border-radius: 16px;
+
+  background: white;
+
+  box-shadow: 0 5px 18px rgba(31, 41, 55, 0.04);
+}
+
+.home-stat-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 18px;
+}
+
+.home-stat-icon-box {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background: #eef0ff;
+}
+
+.home-stat-icon {
+  color: #5146e5;
+  font-size: 18px;
+}
+
+.home-stat-label {
+  color: #8b91a3;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.home-stat-number {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #202338;
+
+  font-family: "Bree Serif", serif;
+  font-size: 32px;
+}
+
+.home-stat-description {
+  color: #9aa0b2;
+
+  font-size: 12px;
+}
+
+/* =========================================================
+   PERFORMANCE
+========================================================= */
+
+.home-performance-section {
+  margin-bottom: 30px;
+  padding: 27px;
+
+  border: 1px solid #e5e7ef;
+  border-radius: 18px;
+
+  background: white;
+
+  box-shadow: 0 7px 25px rgba(31, 41, 55, 0.04);
+}
+
+.home-performance-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.home-performance-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-bottom: 7px;
+
+  color: #6366f1;
+
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.home-performance-heading {
+  margin: 0;
+
+  color: #171a2b;
+
+  font-family: "Bree Serif", serif;
+  font-size: 24px;
+}
+
+.home-performance-subtitle {
+  margin: 6px 0 0;
+
+  color: #85899a;
+
+  font-size: 13px;
+}
+
+.home-readiness-score {
+  width: 95px;
+  height: 95px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  border: 7px solid #eef0ff;
+  border-radius: 50%;
+
+  background: #fafaff;
+}
+
+.home-readiness-number {
+  color: #5146e5;
+
+  font-family: "Bree Serif", serif;
+  font-size: 26px;
+}
+
+.home-readiness-label {
+  color: #85899a;
+  font-size: 11px;
+}
+
+.home-performance-insights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+
+  margin-top: 25px;
+}
+
+.home-insight-card {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+
+  padding: 18px;
+
+  border: 1px solid #eceef5;
+  border-radius: 14px;
+
+  background: #fafbff;
+}
+
+.home-insight-label {
+  color: #85899a;
+
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.home-insight-card strong {
+  color: #202338;
+
+  font-size: 16px;
+}
+
+.home-insight-card > span:last-child {
+  color: #6366f1;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* =========================================================
+   RECENT INTERVIEWS
+========================================================= */
+
+.home-recent-section {
+  margin-top: 0;
+}
+
+.home-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 17px;
+}
+
+.home-section-heading {
+  margin: 0;
+
+  color: #171a2b;
+
+  font-family: "Bree Serif", serif;
+  font-size: 23px;
+}
+
+.home-section-subtitle {
+  margin: 4px 0 0;
+
+  color: #9297a8;
+
+  font-size: 12px;
+}
+
+.home-view-all-btn {
+  padding: 8px 15px;
+
+  border: 1px solid #e2e5ef;
+  border-radius: 8px;
+
+  background: white;
+  color: #5146e5;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.home-view-all-btn:hover {
+  background: #f5f5ff;
+}
+
+/* =========================================================
+   INTERVIEW GRID
+========================================================= */
+
+.home-interviews-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 17px;
+}
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.home-loading-state {
+  min-height: 220px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  border: 1px solid #e5e7ef;
+  border-radius: 16px;
+
+  background: white;
+}
+
+.home-loading-text {
+  margin: 0;
+
+  color: #73788c;
+  font-size: 14px;
+}
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.home-empty-state {
+  min-height: 260px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 35px;
+
+  border: 1px dashed #cfd3df;
+  border-radius: 16px;
+
+  background: white;
+
+  text-align: center;
+}
+
+.home-empty-icon {
+  margin-bottom: 13px;
+
+  color: #a5b4fc;
+
+  font-size: 45px;
+}
+
+.home-empty-heading {
+  margin: 0 0 6px;
+
+  color: #202338;
+
+  font-family: "Bree Serif", serif;
+  font-size: 20px;
+}
+
+.home-empty-text {
+  max-width: 420px;
+
+  margin: 0 0 18px;
+
+  color: #73788c;
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.home-empty-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 11px 19px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: #5146e5;
+  color: white;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.home-empty-cta-btn:hover {
+  background: #4338ca;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+  .home-page {
+    margin-left: 250px;
+    padding: 95px 25px 40px;
+  }
+
+  .home-hero-content {
+    width: 60%;
+  }
+
+  .home-hero-image {
+    width: 40%;
+  }
+}
+
+@media (max-width: 950px) {
+  .home-page {
+    margin-left: 0;
+    padding: 30px 25px 40px;
+  }
+
+  .home-stats-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .home-interviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 750px) {
+  .home-hero {
+    min-height: 350px;
+    padding: 30px;
+  }
+
+  .home-hero-content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .home-hero-image {
+    display: none;
+  }
+
+  .home-stats-row {
+    grid-template-columns: 1fr;
+  }
+
+  .home-performance-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .home-performance-insights {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .home-page {
+    padding: 20px 16px 35px;
+  }
+
+  .home-hero {
+    min-height: 320px;
+    padding: 25px;
+    border-radius: 18px;
+  }
+
+  .home-hero h1 {
+    font-size: 30px;
+  }
+
+  .home-hero-description {
+    font-size: 14px;
+  }
+
+  .home-interviews-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-performance-section {
+    padding: 21px;
+  }
+
+  .home-section-header {
+    align-items: flex-start;
+    gap: 10px;
+  }
+}

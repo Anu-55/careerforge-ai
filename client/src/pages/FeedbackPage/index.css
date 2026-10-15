@@ -1,0 +1,392 @@
+/* =========================================================
+   AI MOCK INTERVIEW — FEEDBACK PAGE
+   Purple & Indigo Premium Design
+   ========================================================= */
+
+.feedback-page {
+  min-height: 100vh;
+  padding: 48px 24px 70px;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(99, 102, 241, 0.08), transparent 30%),
+    radial-gradient(circle at 90% 10%, rgba(139, 92, 246, 0.07), transparent 28%),
+    #f6f8fc;
+}
+
+.feedback-container {
+  width: 100%;
+  max-width: 920px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.feedback-loading-state {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: #f6f8fc;
+}
+
+.feedback-loading-text {
+  margin: 0;
+  color: #64748b;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.feedback-header {
+  padding: 34px 30px;
+  border: 1px solid #e8eaf4;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.94);
+  text-align: center;
+  box-shadow: 0 10px 35px rgba(31, 41, 55, 0.06);
+}
+
+.feedback-heading {
+  margin: 0 0 10px;
+  color: #111827;
+  font-family: "Bree Serif", serif;
+  font-size: 38px;
+  line-height: 1.15;
+}
+
+.feedback-role-text {
+  margin: 0 0 6px;
+  color: #4f46e5;
+  font-family: "Roboto", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.feedback-date-text {
+  margin: 0;
+  color: #94a3b8;
+  font-family: "Roboto", sans-serif;
+  font-size: 13px;
+}
+
+/* =========================================================
+   OVERALL SCORE
+   ========================================================= */
+
+.feedback-overall-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 38px 30px;
+  border: 1px solid #e7e9f4;
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: 0 12px 35px rgba(31, 41, 55, 0.06);
+}
+
+.feedback-score-circle {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border-width: 8px;
+  border-style: solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle, #ffffff 55%, #fafaff 56%);
+  box-shadow:
+    0 0 0 10px #f1f2ff,
+    0 15px 35px rgba(79, 70, 229, 0.10);
+}
+
+.feedback-score-number {
+  font-family: "Bree Serif", serif;
+  font-size: 48px;
+  line-height: 1;
+}
+
+.feedback-score-label {
+  margin-top: 5px;
+  color: #94a3b8;
+  font-family: "Roboto", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.feedback-overall-title {
+  margin: 28px 0 0;
+  color: #111827;
+  font-family: "Bree Serif", serif;
+  font-size: 23px;
+}
+
+/* =========================================================
+   CATEGORY BREAKDOWN
+   ========================================================= */
+
+.feedback-categories-section {
+  padding: 28px;
+  border: 1px solid #e7e9f4;
+  border-radius: 22px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(31, 41, 55, 0.05);
+}
+
+.feedback-section-heading {
+  margin: 0 0 20px;
+  color: #111827;
+  font-family: "Bree Serif", serif;
+  font-size: 24px;
+}
+
+.feedback-scores-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* =========================================================
+   CALLOUT BLOCKS
+   ========================================================= */
+
+.feedback-callout {
+  padding: 24px;
+  border: 1px solid #e8eaf4;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #ffffff;
+  box-shadow: 0 8px 25px rgba(31, 41, 55, 0.04);
+}
+
+.feedback-callout-success {
+  border-left: 5px solid #22c55e;
+  background:
+    linear-gradient(90deg, #f0fdf4 0%, #ffffff 55%);
+}
+
+.feedback-callout-warning {
+  border-left: 5px solid #f59e0b;
+  background:
+    linear-gradient(90deg, #fffbeb 0%, #ffffff 55%);
+}
+
+.feedback-callout-blue {
+  border-left: 5px solid #6366f1;
+  background:
+    linear-gradient(90deg, #f5f3ff 0%, #ffffff 55%);
+}
+
+.feedback-callout-header {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.feedback-callout-icon-success {
+  color: #16a34a;
+  font-size: 21px;
+  flex-shrink: 0;
+}
+
+.feedback-callout-icon-warning {
+  color: #d97706;
+  font-size: 21px;
+  flex-shrink: 0;
+}
+
+.feedback-callout-icon-blue {
+  color: #4f46e5;
+  font-size: 21px;
+  flex-shrink: 0;
+}
+
+.feedback-callout-heading {
+  margin: 0;
+  color: #111827;
+  font-family: "Bree Serif", serif;
+  font-size: 20px;
+}
+
+.feedback-callout-list {
+  margin: 0;
+  padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.feedback-callout-list-item {
+  color: #475569;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.feedback-assessment-text {
+  margin: 0;
+  color: #475569;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
+
+.feedback-actions-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+}
+
+.feedback-btn-primary,
+.feedback-btn-outline {
+  min-height: 48px;
+  padding: 0 24px;
+  border-radius: 11px;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.feedback-btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: none;
+  background: linear-gradient(
+    135deg,
+    #4f46e5,
+    #6366f1
+  );
+  color: #ffffff;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.22);
+}
+
+.feedback-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(79, 70, 229, 0.30);
+}
+
+.feedback-btn-outline {
+  border: 1px solid #dfe3ef;
+  background: #ffffff;
+  color: #4f46e5;
+}
+
+.feedback-btn-outline:hover {
+  transform: translateY(-2px);
+  border-color: #c7c9f5;
+  background: #f8f8ff;
+  box-shadow: 0 8px 20px rgba(31, 41, 55, 0.07);
+}
+
+.feedback-btn-icon {
+  font-size: 17px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+  .feedback-page {
+    padding: 28px 16px 50px;
+  }
+
+  .feedback-container {
+    gap: 20px;
+  }
+
+  .feedback-header {
+    padding: 28px 20px;
+    border-radius: 18px;
+  }
+
+  .feedback-heading {
+    font-size: 30px;
+  }
+
+  .feedback-role-text {
+    font-size: 16px;
+  }
+
+  .feedback-overall-section {
+    padding: 32px 20px;
+    border-radius: 18px;
+  }
+
+  .feedback-score-circle {
+    width: 125px;
+    height: 125px;
+  }
+
+  .feedback-score-number {
+    font-size: 40px;
+  }
+
+  .feedback-categories-section {
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+
+  .feedback-section-heading {
+    font-size: 21px;
+  }
+
+  .feedback-scores-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feedback-callout {
+    padding: 20px;
+  }
+
+  .feedback-actions-row {
+    flex-direction: column;
+  }
+
+  .feedback-btn-primary,
+  .feedback-btn-outline {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .feedback-heading {
+    font-size: 27px;
+  }
+
+  .feedback-score-circle {
+    width: 110px;
+    height: 110px;
+  }
+
+  .feedback-score-number {
+    font-size: 35px;
+  }
+}

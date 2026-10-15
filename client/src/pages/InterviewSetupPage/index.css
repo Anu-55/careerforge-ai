@@ -1,0 +1,627 @@
+
+/* =========================================================
+   INTERVIEW SETUP PAGE
+   Professional AI Interview Coach Design
+   ========================================================= */
+
+.setup-page {
+  min-height: 100vh;
+  background: #f6f8fc;
+  padding: 48px 24px 64px;
+  font-family: "Roboto", sans-serif;
+}
+
+.setup-container {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   STEP INDICATOR
+   ========================================================= */
+
+.setup-step-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.setup-step-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 125px;
+  padding: 11px 20px;
+
+  background: #ffffff;
+  color: #64748b;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 30px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition: all 0.25s ease;
+}
+
+.setup-step-active {
+  color: #ffffff;
+  background: #2563eb;
+  border-color: #2563eb;
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.20);
+}
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.setup-section {
+  background: #ffffff;
+  border: 1px solid #e7ebf2;
+  border-radius: 22px;
+  padding: 36px;
+  box-shadow: 0 10px 35px rgba(15, 23, 42, 0.06);
+  margin-bottom: 28px;
+}
+
+.setup-section-heading {
+  font-family: "Bree Serif", serif;
+  font-size: 28px;
+  color: #0f172a;
+  text-align: center;
+  margin: 0 0 30px;
+}
+
+/* =========================================================
+   ROLE CARDS
+   ========================================================= */
+
+.setup-roles-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.setup-role-card {
+  position: relative;
+
+  min-height: 175px;
+  padding: 24px 18px;
+
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  cursor: pointer;
+  text-align: center;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.setup-role-card:hover {
+  transform: translateY(-5px);
+  border-color: #93c5fd;
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.10);
+}
+
+.setup-role-selected {
+  background: #eff6ff;
+  border-color: #2563eb;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
+}
+
+.setup-role-icon {
+  font-size: 32px;
+  color: #2563eb;
+  transition: transform 0.25s ease;
+}
+
+.setup-role-card:hover .setup-role-icon {
+  transform: scale(1.1);
+}
+
+.setup-role-title {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.setup-role-desc {
+  font-family: "Roboto", sans-serif;
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* =========================================================
+   DIFFICULTY
+   ========================================================= */
+
+.setup-difficulty-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.setup-difficulty-card {
+  padding: 30px 22px;
+
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 18px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 12px;
+
+  cursor: pointer;
+  text-align: center;
+
+  transition: all 0.25s ease;
+}
+
+.setup-difficulty-card:hover {
+  transform: translateY(-5px);
+  border-color: #93c5fd;
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.10);
+}
+
+.setup-difficulty-selected {
+  background: #eff6ff;
+  border-color: #2563eb;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
+}
+
+.setup-difficulty-stars {
+  display: flex;
+  gap: 5px;
+  font-size: 22px;
+}
+
+.setup-star-filled {
+  color: #2563eb;
+}
+
+.setup-star-empty {
+  color: #cbd5e1;
+}
+
+.setup-difficulty-label {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.setup-difficulty-desc {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* =========================================================
+   RESUME UPLOAD
+   ========================================================= */
+
+.setup-resume-area {
+  display: flex;
+  justify-content: center;
+}
+
+.setup-upload-zone {
+  width: 100%;
+  max-width: 600px;
+
+  min-height: 260px;
+
+  border: 2px dashed #bfdbfe;
+  border-radius: 20px;
+
+  background: #f8fbff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 14px;
+
+  cursor: pointer;
+  text-align: center;
+
+  transition: all 0.25s ease;
+}
+
+.setup-upload-zone:hover {
+  background: #eff6ff;
+  border-color: #2563eb;
+  transform: translateY(-3px);
+}
+
+.setup-upload-icon {
+  font-size: 52px;
+  color: #2563eb;
+}
+
+.setup-upload-text {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #334155;
+  margin: 0;
+}
+
+/* Uploaded Resume */
+
+.setup-resume-uploaded {
+  width: 100%;
+  max-width: 600px;
+
+  padding: 22px 24px;
+
+  background: #f8fbff;
+  border: 1px solid #bfdbfe;
+  border-radius: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.setup-resume-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+
+.setup-resume-file-icon {
+  flex-shrink: 0;
+  font-size: 32px;
+  color: #2563eb;
+}
+
+.setup-resume-name {
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f172a;
+
+  margin: 0;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.setup-change-resume-btn {
+  flex-shrink: 0;
+
+  padding: 9px 18px;
+
+  background: #ffffff;
+  color: #2563eb;
+
+  border: 1px solid #bfdbfe;
+  border-radius: 9px;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.setup-change-resume-btn:hover {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+/* =========================================================
+   NAVIGATION BUTTONS
+   ========================================================= */
+
+.setup-nav-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 14px;
+
+  margin-top: 20px;
+}
+
+.setup-back-btn,
+.setup-next-btn {
+  min-width: 130px;
+  padding: 13px 26px;
+
+  border-radius: 10px;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.setup-back-btn {
+  background: #ffffff;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+}
+
+.setup-back-btn:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.setup-next-btn {
+  margin-left: auto;
+
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+
+  box-shadow: 0 7px 18px rgba(37, 99, 235, 0.20);
+}
+
+.setup-next-btn:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   START INTERVIEW BUTTON
+   ========================================================= */
+
+.setup-start-btn {
+  width: 100%;
+
+  padding: 15px 28px;
+
+  background: #2563eb;
+  color: #ffffff;
+
+  border: none;
+  border-radius: 11px;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.22);
+
+  transition: all 0.2s ease;
+}
+
+.setup-start-btn:hover:not(:disabled) {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(37, 99, 235, 0.28);
+}
+
+.setup-start-btn-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* =========================================================
+   PREPARING / LOADING SCREEN
+   ========================================================= */
+
+.setup-preparing {
+  width: 100%;
+  max-width: 600px;
+
+  min-height: 65vh;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  gap: 16px;
+}
+
+.setup-preparing-spinner {
+  width: 52px;
+  height: 52px;
+  color: #2563eb;
+}
+
+.setup-preparing-heading {
+  font-family: "Bree Serif", serif;
+  font-size: 28px;
+  color: #0f172a;
+  margin: 5px 0 0;
+}
+
+.setup-preparing-text {
+  max-width: 520px;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+
+  color: #64748b;
+
+  margin: 0;
+}
+
+.setup-preparing-steps {
+  width: 100%;
+  max-width: 380px;
+
+  margin-top: 15px;
+
+  padding: 20px;
+
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
+}
+
+.setup-prep-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.setup-prep-step-icon-active {
+  font-size: 19px;
+  color: #16a34a;
+}
+
+.setup-prep-step-icon-pending {
+  font-size: 19px;
+  color: #94a3b8;
+}
+
+.setup-prep-step-text {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  color: #334155;
+}
+
+.setup-preparing-hint {
+  font-family: "Roboto", sans-serif;
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 4px 0 0;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .setup-roles-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .setup-page {
+    padding: 28px 16px 48px;
+  }
+
+  .setup-step-indicator {
+    flex-wrap: wrap;
+    margin-bottom: 28px;
+  }
+
+  .setup-step-badge {
+    min-width: auto;
+    flex: 1;
+  }
+
+  .setup-section {
+    padding: 24px 18px;
+    border-radius: 18px;
+  }
+
+  .setup-section-heading {
+    font-size: 24px;
+  }
+
+  .setup-roles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .setup-difficulty-row {
+    grid-template-columns: 1fr;
+  }
+
+  .setup-nav-buttons {
+    flex-direction: column-reverse;
+  }
+
+  .setup-back-btn,
+  .setup-next-btn {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .setup-resume-uploaded {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .setup-change-resume-btn {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .setup-page {
+    padding: 20px 12px 40px;
+  }
+
+  .setup-step-indicator {
+    gap: 6px;
+  }
+
+  .setup-step-badge {
+    padding: 9px 10px;
+    font-size: 12px;
+  }
+
+  .setup-section {
+    padding: 20px 14px;
+  }
+
+  .setup-section-heading {
+    font-size: 22px;
+  }
+
+  .setup-role-card {
+    min-height: 150px;
+  }
+
+  .setup-upload-zone {
+    min-height: 220px;
+    padding: 30px 20px;
+  }
+}
