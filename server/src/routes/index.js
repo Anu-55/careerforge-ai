@@ -12,6 +12,6 @@ router.use('/resume', resumeRoutes);
 router.use('/interview', interviewRoutes);
 router.use('/history', historyRoutes);
 router.use('/dashboard/performance', performanceRoutes);
-console.log('Performance route mounted');
+
 
 export default router;

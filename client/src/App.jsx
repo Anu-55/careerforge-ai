@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
+import DebuggingPage from './pages/DebuggingPage';
 
 import LoginPage from './pages/LoginPage';
 import Navbar from './components/Navbar';
@@ -96,6 +97,17 @@ function App() {
             </ProtectedRoute>
           }
         />
+      {/* ================================
+    DEBUGGING INTERVIEW
+================================= */}
+<Route
+  path="/debugging"
+  element={
+    <ProtectedRoute>
+      <DebuggingPage />
+    </ProtectedRoute>
+  }
+/>
 
 
         {/* ================================
@@ -105,6 +117,7 @@ function App() {
           path="*"
           element={<Navigate to="/" />}
         />
+
 
       </Routes>
 

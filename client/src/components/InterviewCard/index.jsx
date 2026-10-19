@@ -40,6 +40,7 @@ function InterviewCard({ interview, onClick, onDelete }) {
         )}
       <div className="interview-card-footer">
         <button
+          type="button"
           className="interview-card-delete"
           onClick={(e) => {
             e.stopPropagation();

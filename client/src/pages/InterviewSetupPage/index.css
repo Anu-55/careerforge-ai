@@ -1,58 +1,241 @@
-
 /* =========================================================
    INTERVIEW SETUP PAGE
-   Professional AI Interview Coach Design
+   Recruiter / Portfolio Ready AI Interview UI
    ========================================================= */
 
 .setup-page {
   min-height: 100vh;
-  background: #f6f8fc;
-  padding: 48px 24px 64px;
+  background:
+    radial-gradient(circle at top left, rgba(99, 102, 241, 0.08), transparent 35%),
+    #f7f8fc;
+  padding: 42px 24px 70px;
   font-family: "Roboto", sans-serif;
+  color: #0f172a;
 }
 
 .setup-container {
   width: 100%;
-  max-width: 1050px;
+  max-width: 1120px;
   margin: 0 auto;
 }
 
 /* =========================================================
-   STEP INDICATOR
+   HERO
    ========================================================= */
 
-.setup-step-indicator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 40px;
+.setup-hero {
+  position: relative;
+  overflow: hidden;
+
+  padding: 48px 48px 44px;
+  margin-bottom: 28px;
+
+  border-radius: 28px;
+
+  background:
+    radial-gradient(
+      circle at 85% 20%,
+      rgba(139, 92, 246, 0.45),
+      transparent 32%
+    ),
+    linear-gradient(135deg, #111827 0%, #1e1b4b 55%, #312e81 100%);
+
+  color: #ffffff;
+
+  box-shadow:
+    0 20px 45px rgba(30, 27, 75, 0.18);
 }
 
-.setup-step-badge {
+.setup-hero::before {
+  content: "";
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  right: -70px;
+  bottom: -100px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.setup-hero::after {
+  content: "";
+  position: absolute;
+
+  width: 140px;
+  height: 140px;
+
+  right: 120px;
+  top: -90px;
+
+  border-radius: 50%;
+
+  background: rgba(96, 165, 250, 0.08);
+}
+
+.setup-hero-badge {
+  position: relative;
+  z-index: 1;
+
+  width: fit-content;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  color: #dbeafe;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 0.2px;
+
+  backdrop-filter: blur(8px);
+}
+
+.setup-hero-title {
+  position: relative;
+  z-index: 1;
+
+  max-width: 720px;
+
+  margin: 18px 0 12px;
+
+  font-family: "Roboto", sans-serif;
+  font-size: clamp(34px, 5vw, 52px);
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -1.4px;
+
+  color: #ffffff;
+}
+
+.setup-hero-description {
+  position: relative;
+  z-index: 1;
+
+  max-width: 650px;
+
+  margin: 0;
+
+  color: #cbd5e1;
+
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   STEPPER
+   ========================================================= */
+
+.setup-stepper {
   display: flex;
   align-items: center;
-  justify-content: center;
-  min-width: 125px;
-  padding: 11px 20px;
+
+  padding: 20px 24px;
+  margin-bottom: 28px;
 
   background: #ffffff;
-  color: #64748b;
 
-  border: 1px solid #e2e8f0;
-  border-radius: 30px;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
 
-  font-size: 14px;
-  font-weight: 600;
-
-  transition: all 0.25s ease;
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
 }
 
-.setup-step-active {
+.setup-step {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  min-width: 190px;
+
+  color: #94a3b8;
+}
+
+.setup-step-number {
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+
+  color: #64748b;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  transition: all 0.2s ease;
+}
+
+.setup-step strong {
+  display: block;
+
+  color: #94a3b8;
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.setup-step small {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #cbd5e1;
+
+  font-size: 12px;
+}
+
+.setup-step.active .setup-step-number {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  border-color: transparent;
+
   color: #ffffff;
-  background: #2563eb;
-  border-color: #2563eb;
-  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.20);
+
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.25);
+}
+
+.setup-step.active strong {
+  color: #0f172a;
+}
+
+.setup-step.active small {
+  color: #64748b;
+}
+
+.setup-step-line {
+  flex: 1;
+
+  height: 2px;
+
+  margin: 0 14px;
+
+  background: #e2e8f0;
+
+  transition: background 0.2s ease;
+}
+
+.setup-step-line.active {
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
 }
 
 /* =========================================================
@@ -61,40 +244,49 @@
 
 .setup-section {
   background: #ffffff;
-  border: 1px solid #e7ebf2;
-  border-radius: 22px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+
   padding: 36px;
-  box-shadow: 0 10px 35px rgba(15, 23, 42, 0.06);
-  margin-bottom: 28px;
+
+  box-shadow:
+    0 12px 35px rgba(15, 23, 42, 0.06);
+
+  margin-bottom: 26px;
 }
 
 .setup-section-heading {
-  font-family: "Bree Serif", serif;
-  font-size: 28px;
-  color: #0f172a;
-  text-align: center;
   margin: 0 0 30px;
+
+  text-align: left;
+
+  font-family: "Roboto", sans-serif;
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+
+  color: #0f172a;
 }
 
 /* =========================================================
-   ROLE CARDS
+   ROLE GRID
    ========================================================= */
 
 .setup-roles-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
 }
 
 .setup-role-card {
   position: relative;
 
-  min-height: 175px;
-  padding: 24px 18px;
+  min-height: 205px;
 
-  background: #ffffff;
-  border: 1.5px solid #e2e8f0;
-  border-radius: 16px;
+  padding: 24px 18px;
 
   display: flex;
   flex-direction: column;
@@ -103,52 +295,134 @@
 
   gap: 10px;
 
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+
   cursor: pointer;
+
   text-align: center;
 
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    border-color 0.25s ease,
-    background-color 0.25s ease;
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+
+  font-family: "Roboto", sans-serif;
 }
 
 .setup-role-card:hover {
-  transform: translateY(-5px);
-  border-color: #93c5fd;
-  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.10);
+  transform: translateY(-4px);
+
+  border-color: #a5b4fc;
+
+  box-shadow:
+    0 14px 28px rgba(79, 70, 229, 0.10);
 }
 
 .setup-role-selected {
-  background: #eff6ff;
-  border-color: #2563eb;
-  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
+  background:
+    linear-gradient(
+      145deg,
+      #f5f3ff 0%,
+      #eff6ff 100%
+    );
+
+  border-color: #6366f1;
+
+  box-shadow:
+    0 14px 30px rgba(79, 70, 229, 0.13);
+}
+
+/* =========================================================
+   ROLE ICON
+   ========================================================= */
+
+.setup-role-icon-wrap {
+  width: 54px;
+  height: 54px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 3px;
+
+  border-radius: 15px;
+
+  background: #eef2ff;
+
+  color: #4f46e5;
+
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.setup-role-card:hover .setup-role-icon-wrap {
+  transform: translateY(-2px);
+
+  background: #e0e7ff;
+}
+
+.setup-role-selected .setup-role-icon-wrap {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+
+  color: #ffffff;
 }
 
 .setup-role-icon {
-  font-size: 32px;
-  color: #2563eb;
-  transition: transform 0.25s ease;
+  font-size: 25px;
 }
 
-.setup-role-card:hover .setup-role-icon {
-  transform: scale(1.1);
+.setup-role-check {
+  position: absolute;
+
+  top: 14px;
+  right: 14px;
+
+  font-size: 20px;
+
+  color: #4f46e5;
 }
 
 .setup-role-title {
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: #0f172a;
   margin: 0;
+
+  color: #0f172a;
+
+  font-size: 15px;
+  line-height: 1.3;
+  font-weight: 800;
 }
 
 .setup-role-desc {
-  font-family: "Roboto", sans-serif;
-  font-size: 13px;
-  color: #64748b;
-  line-height: 1.5;
+  max-width: 190px;
+
   margin: 0;
+
+  color: #64748b;
+
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.setup-role-select-text {
+  margin-top: 4px;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+.setup-role-selected .setup-role-select-text {
+  color: #4f46e5;
 }
 
 /* =========================================================
@@ -157,49 +431,76 @@
 
 .setup-difficulty-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: 18px;
 }
 
 .setup-difficulty-card {
-  padding: 30px 22px;
+  position: relative;
 
-  background: #ffffff;
-  border: 1.5px solid #e2e8f0;
-  border-radius: 18px;
+  min-height: 190px;
+
+  padding: 30px 24px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 
-  gap: 12px;
+  gap: 13px;
+
+  background: #ffffff;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
 
   cursor: pointer;
+
   text-align: center;
 
-  transition: all 0.25s ease;
+  font-family: "Roboto", sans-serif;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .setup-difficulty-card:hover {
-  transform: translateY(-5px);
-  border-color: #93c5fd;
-  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.10);
+  transform: translateY(-4px);
+
+  border-color: #a5b4fc;
+
+  box-shadow:
+    0 14px 28px rgba(79, 70, 229, 0.10);
 }
 
 .setup-difficulty-selected {
-  background: #eff6ff;
-  border-color: #2563eb;
-  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.15);
+  background: linear-gradient(
+    145deg,
+    #f5f3ff,
+    #eff6ff
+  );
+
+  border-color: #6366f1;
+
+  box-shadow:
+    0 14px 30px rgba(79, 70, 229, 0.13);
 }
 
 .setup-difficulty-stars {
   display: flex;
-  gap: 5px;
+  align-items: center;
+  gap: 6px;
+
   font-size: 22px;
 }
 
 .setup-star-filled {
-  color: #2563eb;
+  color: #6366f1;
 }
 
 .setup-star-empty {
@@ -207,19 +508,23 @@
 }
 
 .setup-difficulty-label {
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: #0f172a;
   margin: 0;
+
+  color: #0f172a;
+
+  font-size: 18px;
+  font-weight: 800;
 }
 
 .setup-difficulty-desc {
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  color: #64748b;
-  line-height: 1.5;
+  max-width: 250px;
+
   margin: 0;
+
+  color: #64748b;
+
+  font-size: 13px;
+  line-height: 1.6;
 }
 
 /* =========================================================
@@ -233,88 +538,154 @@
 
 .setup-upload-zone {
   width: 100%;
-  max-width: 600px;
+  max-width: 680px;
 
-  min-height: 260px;
-
-  border: 2px dashed #bfdbfe;
-  border-radius: 20px;
-
-  background: #f8fbff;
+  min-height: 290px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  gap: 14px;
+  padding: 40px 30px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f8faff,
+      #f5f3ff
+    );
+
+  border: 2px dashed #c7d2fe;
+  border-radius: 22px;
 
   cursor: pointer;
+
   text-align: center;
 
-  transition: all 0.25s ease;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .setup-upload-zone:hover {
-  background: #eff6ff;
-  border-color: #2563eb;
+  background:
+    linear-gradient(
+      145deg,
+      #eff6ff,
+      #f5f3ff
+    );
+
+  border-color: #6366f1;
+
   transform: translateY(-3px);
+
+  box-shadow:
+    0 14px 30px rgba(79, 70, 229, 0.09);
 }
 
 .setup-upload-icon {
-  font-size: 52px;
-  color: #2563eb;
+  width: 64px;
+  height: 64px;
+
+  padding: 17px;
+
+  margin-bottom: 10px;
+
+  border-radius: 18px;
+
+  background: #e0e7ff;
+
+  color: #4f46e5;
+
+  font-size: 30px;
 }
 
 .setup-upload-text {
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  color: #334155;
   margin: 0;
+
+  color: #1e293b;
+
+  font-size: 16px;
+  font-weight: 800;
 }
 
-/* Uploaded Resume */
+.setup-upload-subtitle {
+  max-width: 430px;
+
+  margin: 7px 0 0;
+
+  color: #64748b;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   UPLOADED RESUME
+   ========================================================= */
 
 .setup-resume-uploaded {
   width: 100%;
-  max-width: 600px;
+  max-width: 680px;
 
-  padding: 22px 24px;
-
-  background: #f8fbff;
-  border: 1px solid #bfdbfe;
-  border-radius: 16px;
+  padding: 20px 22px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   gap: 20px;
+
+  background: #f8fafc;
+
+  border: 1px solid #c7d2fe;
+  border-radius: 18px;
+
+  box-shadow:
+    0 8px 20px rgba(15, 23, 42, 0.04);
 }
 
 .setup-resume-info {
+  min-width: 0;
+
   display: flex;
   align-items: center;
+
   gap: 14px;
-  min-width: 0;
 }
 
 .setup-resume-file-icon {
   flex-shrink: 0;
-  font-size: 32px;
-  color: #2563eb;
+
+  width: 46px;
+  height: 46px;
+
+  padding: 11px;
+
+  border-radius: 13px;
+
+  background: #e0e7ff;
+
+  color: #4f46e5;
+
+  font-size: 22px;
 }
 
 .setup-resume-name {
-  font-family: "Roboto", sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: #0f172a;
+  min-width: 0;
 
   margin: 0;
 
   overflow: hidden;
+
+  color: #0f172a;
+
+  font-size: 14px;
+  font-weight: 700;
+
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -322,36 +693,43 @@
 .setup-change-resume-btn {
   flex-shrink: 0;
 
-  padding: 9px 18px;
+  padding: 9px 17px;
 
   background: #ffffff;
-  color: #2563eb;
 
-  border: 1px solid #bfdbfe;
-  border-radius: 9px;
+  border: 1px solid #c7d2fe;
+  border-radius: 10px;
+
+  color: #4f46e5;
 
   font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  font-weight: 600;
+
+  font-size: 13px;
+  font-weight: 700;
 
   cursor: pointer;
 
-  transition: all 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .setup-change-resume-btn:hover {
-  background: #2563eb;
+  background: #4f46e5;
+
+  border-color: #4f46e5;
+
   color: #ffffff;
 }
 
 /* =========================================================
-   NAVIGATION BUTTONS
+   NAVIGATION
    ========================================================= */
 
 .setup-nav-buttons {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 
   gap: 14px;
 
@@ -360,81 +738,116 @@
 
 .setup-back-btn,
 .setup-next-btn {
-  min-width: 130px;
-  padding: 13px 26px;
+  min-width: 135px;
 
-  border-radius: 10px;
+  padding: 13px 24px;
+
+  border-radius: 11px;
 
   font-family: "Roboto", sans-serif;
-  font-size: 15px;
-  font-weight: 700;
+
+  font-size: 14px;
+  font-weight: 800;
 
   cursor: pointer;
 
-  transition: all 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .setup-back-btn {
   background: #ffffff;
+
+  border: 1px solid #d1d5db;
+
   color: #334155;
-  border: 1px solid #cbd5e1;
 }
 
 .setup-back-btn:hover {
-  background: #f1f5f9;
+  background: #f8fafc;
+
   border-color: #94a3b8;
+
+  transform: translateY(-1px);
 }
 
 .setup-next-btn {
   margin-left: auto;
 
-  background: #2563eb;
-  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    #2563eb,
+    #6366f1
+  );
+
   border: none;
 
-  box-shadow: 0 7px 18px rgba(37, 99, 235, 0.20);
+  color: #ffffff;
+
+  box-shadow:
+    0 8px 20px rgba(79, 70, 229, 0.22);
 }
 
 .setup-next-btn:hover {
-  background: #1d4ed8;
   transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 25px rgba(79, 70, 229, 0.28);
 }
 
 /* =========================================================
-   START INTERVIEW BUTTON
+   START INTERVIEW
    ========================================================= */
 
 .setup-start-btn {
   width: 100%;
 
-  padding: 15px 28px;
-
-  background: #2563eb;
-  color: #ffffff;
+  padding: 16px 28px;
 
   border: none;
-  border-radius: 11px;
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #6366f1,
+      #7c3aed
+    );
+
+  color: #ffffff;
 
   font-family: "Roboto", sans-serif;
+
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 800;
 
   cursor: pointer;
 
-  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.22);
+  box-shadow:
+    0 10px 25px rgba(79, 70, 229, 0.24);
 
-  transition: all 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .setup-start-btn:hover:not(:disabled) {
-  background: #1d4ed8;
   transform: translateY(-2px);
-  box-shadow: 0 12px 26px rgba(37, 99, 235, 0.28);
+
+  box-shadow:
+    0 14px 30px rgba(79, 70, 229, 0.30);
 }
 
 .setup-start-btn-disabled {
-  opacity: 0.5;
+  opacity: 0.45;
+
   cursor: not-allowed;
+
   box-shadow: none;
 }
 
@@ -444,9 +857,9 @@
 
 .setup-preparing {
   width: 100%;
-  max-width: 600px;
+  max-width: 620px;
 
-  min-height: 65vh;
+  min-height: 75vh;
 
   margin: 0 auto;
 
@@ -456,114 +869,192 @@
   justify-content: center;
 
   text-align: center;
+
   gap: 16px;
 }
 
 .setup-preparing-spinner {
   width: 52px;
   height: 52px;
-  color: #2563eb;
+
+  color: #6366f1;
 }
 
 .setup-preparing-heading {
-  font-family: "Bree Serif", serif;
-  font-size: 28px;
-  color: #0f172a;
   margin: 5px 0 0;
+
+  color: #0f172a;
+
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
 }
 
 .setup-preparing-text {
-  max-width: 520px;
+  max-width: 540px;
 
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
+  margin: 0;
 
   color: #64748b;
 
-  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.setup-preparing-text strong {
+  color: #4f46e5;
 }
 
 .setup-preparing-steps {
   width: 100%;
-  max-width: 380px;
+  max-width: 420px;
 
-  margin-top: 15px;
+  margin-top: 12px;
 
-  padding: 20px;
+  padding: 22px;
 
   background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
 
   display: flex;
   flex-direction: column;
-  gap: 14px;
 
-  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
+  gap: 15px;
+
+  text-align: left;
+
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.06);
 }
 
 .setup-prep-step {
   display: flex;
   align-items: center;
+
   gap: 12px;
 }
 
 .setup-prep-step-icon-active {
+  flex-shrink: 0;
+
   font-size: 19px;
+
   color: #16a34a;
 }
 
 .setup-prep-step-icon-pending {
+  flex-shrink: 0;
+
   font-size: 19px;
+
   color: #94a3b8;
 }
 
 .setup-prep-step-text {
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
   color: #334155;
+
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .setup-preparing-hint {
-  font-family: "Roboto", sans-serif;
-  font-size: 13px;
+  margin: 3px 0 0;
+
   color: #94a3b8;
-  margin: 4px 0 0;
+
+  font-size: 12px;
 }
 
 /* =========================================================
    RESPONSIVE
    ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .setup-roles-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .setup-step {
+    min-width: 150px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .setup-page {
-    padding: 28px 16px 48px;
+    padding: 28px 16px 50px;
   }
 
-  .setup-step-indicator {
-    flex-wrap: wrap;
-    margin-bottom: 28px;
+  .setup-hero {
+    padding: 36px 28px;
+    border-radius: 22px;
   }
 
-  .setup-step-badge {
+  .setup-hero-title {
+    font-size: 36px;
+  }
+
+  .setup-stepper {
+    padding: 18px;
+  }
+
+  .setup-step {
     min-width: auto;
-    flex: 1;
+  }
+
+  .setup-step strong {
+    font-size: 13px;
+  }
+
+  .setup-step small {
+    display: none;
   }
 
   .setup-section {
-    padding: 24px 18px;
-    border-radius: 18px;
+    padding: 28px 22px;
+  }
+
+  .setup-roles-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .setup-hero {
+    padding: 30px 22px;
+  }
+
+  .setup-hero-title {
+    font-size: 30px;
+    letter-spacing: -0.8px;
+  }
+
+  .setup-hero-description {
+    font-size: 14px;
+  }
+
+  .setup-stepper {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .setup-step {
+    width: 100%;
+  }
+
+  .setup-step-line {
+    width: 2px;
+    height: 15px;
+
+    flex: none;
+
+    margin: 0 0 0 18px;
   }
 
   .setup-section-heading {
-    font-size: 24px;
+    font-size: 22px;
   }
 
   .setup-roles-grid {
@@ -590,38 +1081,44 @@
   }
 
   .setup-change-resume-btn {
+    width: 100%;
+
     text-align: center;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 420px) {
   .setup-page {
-    padding: 20px 12px 40px;
+    padding: 18px 12px 40px;
   }
 
-  .setup-step-indicator {
-    gap: 6px;
+  .setup-hero {
+    padding: 26px 18px;
   }
 
-  .setup-step-badge {
-    padding: 9px 10px;
-    font-size: 12px;
+  .setup-hero-badge {
+    font-size: 11px;
+  }
+
+  .setup-hero-title {
+    font-size: 27px;
   }
 
   .setup-section {
-    padding: 20px 14px;
-  }
-
-  .setup-section-heading {
-    font-size: 22px;
+    padding: 22px 16px;
+    border-radius: 18px;
   }
 
   .setup-role-card {
-    min-height: 150px;
+    min-height: 185px;
   }
 
   .setup-upload-zone {
-    min-height: 220px;
-    padding: 30px 20px;
+    min-height: 250px;
+    padding: 28px 18px;
+  }
+
+  .setup-upload-subtitle {
+    font-size: 12px;
   }
 }

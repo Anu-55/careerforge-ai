@@ -1,58 +1,72 @@
-export const GENERATE_QUESTIONS_PROMPT = (role, resumeText, totalQuestions) => `
+export const GENERATE_QUESTIONS_PROMPT = (
+  role,
+  resumeText,
+  totalQuestions
+) => `
 You are an expert technical interviewer conducting a ${role} interview.
 
-Analyze the candidate's resume below and generate exactly ${totalQuestions - 1} interview questions.
-The FIRST question "Tell me about yourself" is already added — do NOT include it.
+IMPORTANT QUESTION COUNT RULE:
+Generate EXACTLY ${totalQuestions} interview questions.
 
-RULES:
-1. Generate a realistic interview flow like real-world interviews:
-   - 1-2 behavioral questions (based on their experience, projects, and past roles from resume)
-   - 1-2 technical knowledge questions (specific to the ${role} role)
-   - 1 coding question (mark as code question)
-2. Questions should be SHORT and CRISP (1-2 sentences maximum)
-3. Reference specific skills, projects, or experience from the resume
-4. Gradually increase difficulty
-5. Make questions conversational — like a real interviewer would ask, not a quiz
+The JSON array MUST contain exactly ${totalQuestions} objects.
+
+Do NOT generate fewer questions.
+Do NOT generate more questions.
+
+QUESTION RULES:
+1. Make the questions conversational, like a real interviewer.
+2. Make the questions relevant to the ${role} role.
+3. Use the candidate's resume to personalize the questions.
+4. Mix behavioral and technical questions.
+5. Avoid duplicate questions.
+6. Make every question meaningfully different.
+7. Questions should gradually become more challenging.
+8. Include coding questions when appropriate.
 
 CODING QUESTION RULES:
-- For the coding question, randomly pick ONE of these formats:
-  a) "write" — Ask the candidate to write a function/solution from scratch
-  b) "fix" — Provide a buggy code snippet and ask them to find and fix the bug
-  c) "explain" — Provide a code snippet and ask them to explain what it does and how it works
-- Set the "codeType" field to "write", "fix", or "explain"
-- For "fix" and "explain", include the code snippet in the "codeSnippet" field
-- Specify the language based on the role
+- For a coding question, randomly choose ONE format:
+  "write", "fix", or "explain".
+
+- Set "codeType" to:
+  "write", "fix", or "explain".
+
+- For "write":
+  Ask the candidate to write a solution from scratch.
+
+- For "fix":
+  Provide buggy code and ask the candidate to find and fix the problem.
+  Include the code in "codeSnippet".
+
+- For "explain":
+  Provide code and ask the candidate to explain it.
+  Include the code in "codeSnippet".
+
+- Set "codeLanguage" according to the role.
 
 RESPONSE FORMAT:
-Return ONLY a valid JSON array (no markdown, no code blocks, no extra text):
+
+Return ONLY a valid JSON array.
+
+The array MUST contain exactly ${totalQuestions} objects.
+
+No markdown.
+No code blocks.
+No explanation outside the JSON array.
+
+Example format:
+
 [
   {
-    "text": "question text here",
-    "type": "behavioral",
+    "text": "Tell me about your experience with React.",
+    "type": "technical",
     "isCodeQuestion": false
   },
   {
-    "text": "Write a function that reverses a linked list.",
+    "text": "Write a function that reverses a string.",
     "type": "technical",
     "isCodeQuestion": true,
     "codeType": "write",
     "codeLanguage": "javascript"
-  },
-  {
-    "text": "This function is supposed to filter even numbers but has a bug. Find and fix it.",
-    "type": "technical",
-    "isCodeQuestion": true,
-    "codeType": "fix",
-    "codeLanguage": "javascript",
-    "codeSnippet": "function filterEvens(arr) {\\n  return arr.filter(n => n % 2 === 1);\\n}"
-  },
-  {
-    "text": "Explain what this code does and what the output would be.",
-    "type": "technical",
-    "isCodeQuestion": true,
-    "codeType": "explain",
-    "codeLanguage": "javascript",
-    "codeSnippet": "const result = [1,2,3].reduce((acc, n) => acc + n, 0);"
   }
 ]
 

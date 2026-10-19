@@ -1,7 +1,10 @@
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext.jsx';
-import { getHistory, deleteHistoryItem } from '../../services/historyService.js';
+import {
+  getHistory,
+  deleteHistoryItem,
+} from '../../services/historyService.js';
 import { getPerformance } from '../../services/performanceService.js';
 import InterviewCard from '../../components/InterviewCard';
 
@@ -12,7 +15,11 @@ import {
   BsPlayCircleFill,
   BsChatSquareText,
   BsStars,
+  BsArrowRight,
+  BsLightningChargeFill,
+  BsBullseye,
 } from 'react-icons/bs';
+
 import toast from 'react-hot-toast';
 import './index.css';
 
@@ -26,31 +33,31 @@ function HomePage() {
   const [performance, setPerformance] = useState(null);
 
   useEffect(() => {
-  const loadHistory = async () => {
-    try {
-      const allData = await getHistory(1, 100);
+    const loadHistory = async () => {
+      try {
+        const allData = await getHistory(1, 100);
 
-      setAllInterviews(allData.entries);
-      setRecentInterviews(allData.entries.slice(0, 3));
-    } catch (error) {
-      console.error('Failed to load history:', error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+        setAllInterviews(allData.entries);
+        setRecentInterviews(allData.entries.slice(0, 3));
+      } catch (error) {
+        console.error('Failed to load history:', error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const loadPerformance = async () => {
-    try {
-      const data = await getPerformance();
-      setPerformance(data);
-    } catch (error) {
-      console.error('Failed to load performance:', error.message);
-    }
-  };
+    const loadPerformance = async () => {
+      try {
+        const data = await getPerformance();
+        setPerformance(data);
+      } catch (error) {
+        console.error('Failed to load performance:', error.message);
+      }
+    };
 
-  loadHistory();
-  loadPerformance();
-}, []);
+    loadHistory();
+    loadPerformance();
+  }, []);
 
   const handleDelete = async (id) => {
     try {
@@ -77,18 +84,18 @@ function HomePage() {
   };
 
   const completedCount = allInterviews.filter(
-    (i) => i.status === 'completed'
+    (interview) => interview.status === 'completed'
   ).length;
 
   const scoredInterviews = allInterviews.filter(
-    (i) => i.overallScore
+    (interview) => interview.overallScore
   );
 
   const avgScore =
     scoredInterviews.length > 0
       ? Math.round(
           scoredInterviews.reduce(
-            (sum, i) => sum + i.overallScore,
+            (sum, interview) => sum + interview.overallScore,
             0
           ) / scoredInterviews.length
         )
@@ -96,56 +103,95 @@ function HomePage() {
 
   const firstName = user?.name?.split(' ')[0] || 'there';
 
+  const getSkillName = (name) => {
+    const skillNames = {
+      communicationSkills: 'Communication Skills',
+      technicalKnowledge: 'Technical Knowledge',
+      problemSolving: 'Problem Solving',
+      codeQuality: 'Code Quality',
+      confidence: 'Confidence',
+    };
+
+    return skillNames[name] || name || 'Not available';
+  };
+
   return (
     <div className="home-page">
 
-      {/* ================================
-          WELCOME SECTION
-      ================================= */}
+      {/* ==========================================
+          HERO / WELCOME
+      ========================================== */}
 
       <section className="home-hero">
 
-  <div className="home-hero-content">
+        <div className="home-hero-content">
 
-    <p className="home-hero-welcome">
-      Welcome back, {firstName}! 👋
-    </p>
+          <div className="home-hero-badge">
+            <BsStars />
+            AI Interview Coach
+          </div>
 
-    <h1>
-      Sharpen Your Skills,
-      <br />
-      Build Your Future
-    </h1>
+          <p className="home-hero-welcome">
+            Welcome back, {firstName}! 👋
+          </p>
 
-    <p className="home-hero-description">
-      Practice with AI, get instant feedback, and become
-      <br />
-      more confident in your next interview.
-    </p>
+          <h1 className="home-hero-title">
+            Sharpen Your Skills,
+            <br />
+            <span>Build Your Future.</span>
+          </h1>
 
-    <button
-      className="home-hero-button"
-      onClick={() => navigate('/setup')}
-    >
-      <BsPlayCircleFill />
-      <span>Start New Interview</span>
-      <span className="home-hero-arrow">→</span>
-    </button>
+          <p className="home-hero-description">
+            Practice with AI, receive personalized feedback,
+            <br />
+            and become more confident for your next interview.
+          </p>
 
-  </div>
+          <button
+            className="home-hero-button"
+            onClick={() => navigate('/setup')}
+          >
+            <BsPlayCircleFill />
 
-  <div className="home-hero-image">
-    <img
-      src="/hero-girl.png"
-      alt="AI interview coach"
-    />
-  </div>
+            <span>Start New Interview</span>
 
-</section>
+            <BsArrowRight className="home-hero-arrow" />
+          </button>
 
-      {/* ================================
-          PERFORMANCE STATS
-      ================================= */}
+        </div>
+
+        <div className="home-hero-visual">
+
+          <div className="home-hero-glow"></div>
+
+          <div className="home-hero-card">
+
+            <div className="home-hero-card-icon">
+              <BsLightningChargeFill />
+            </div>
+
+            <div>
+              <strong>AI-Powered Practice</strong>
+
+              <span>
+                Personalized questions
+              </span>
+            </div>
+
+          </div>
+
+          <div className="home-hero-circle">
+            <BsStars />
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* ==========================================
+          QUICK STATS
+      ========================================== */}
 
       <section className="home-stats-row">
 
@@ -154,7 +200,7 @@ function HomePage() {
           <div className="home-stat-card-top">
 
             <div className="home-stat-icon-box">
-              <BsChatSquareTextFill className="home-stat-icon" />
+              <BsChatSquareTextFill />
             </div>
 
             <span className="home-stat-label">
@@ -179,7 +225,7 @@ function HomePage() {
           <div className="home-stat-card-top">
 
             <div className="home-stat-icon-box">
-              <BsCheckCircleFill className="home-stat-icon" />
+              <BsCheckCircleFill />
             </div>
 
             <span className="home-stat-label">
@@ -204,7 +250,7 @@ function HomePage() {
           <div className="home-stat-card-top">
 
             <div className="home-stat-icon-box">
-              <BsTrophyFill className="home-stat-icon" />
+              <BsTrophyFill />
             </div>
 
             <span className="home-stat-label">
@@ -223,134 +269,187 @@ function HomePage() {
 
         </div>
 
-      </section>
-      {/* ================================
-    AI PERFORMANCE OVERVIEW
-================================ */}
 
-{performance?.hasData && (
-  <section className="home-performance-section">
+        <div className="home-stat-card">
 
-    <div className="home-performance-header">
+          <div className="home-stat-card-top">
 
-      <div>
-        <div className="home-performance-eyebrow">
-          <BsStars />
-          AI Performance Insights
+            <div className="home-stat-icon-box">
+              <BsBullseye />
+            </div>
+
+            <span className="home-stat-label">
+              Readiness
+            </span>
+
+          </div>
+
+          <span className="home-stat-number">
+            {performance?.hasData
+              ? performance.readinessScore
+              : 0}
+          </span>
+
+          <span className="home-stat-description">
+            Interview readiness
+          </span>
+
         </div>
 
-        <h2 className="home-performance-heading">
-          Your Interview Readiness
-        </h2>
-
-        <p className="home-performance-subtitle">
-          See how your interview skills are developing over time.
-        </p>
-      </div>
-
-      <div className="home-readiness-score">
-        <span className="home-readiness-number">
-          {performance.readinessScore}
-        </span>
-
-        <span className="home-readiness-label">
-          /100
-        </span>
-      </div>
-
-    </div>
-
-    <div className="home-performance-insights">
-
-      <div className="home-insight-card">
-        <span className="home-insight-label">
-          Strongest Skill
-        </span>
-
-        <strong>
-  {performance.strongestSkill?.name === 'communicationSkills'
-    ? 'Communication Skills'
-    : performance.strongestSkill?.name === 'technicalKnowledge'
-    ? 'Technical Knowledge'
-    : performance.strongestSkill?.name === 'problemSolving'
-    ? 'Problem Solving'
-    : performance.strongestSkill?.name === 'codeQuality'
-    ? 'Code Quality'
-    : performance.strongestSkill?.name === 'confidence'
-    ? 'Confidence'
-    : performance.strongestSkill?.name}
-</strong>
-
-        <span>
-          {performance.strongestSkill?.score}/100
-        </span>
-      </div>
+      </section>
 
 
-      <div className="home-insight-card">
-        <span className="home-insight-label">
-          Focus Area
-        </span>
+      {/* ==========================================
+          AI PERFORMANCE
+      ========================================== */}
 
-        <strong>
-  {performance.improvementArea?.name === 'communicationSkills'
-    ? 'Communication Skills'
-    : performance.improvementArea?.name === 'technicalKnowledge'
-    ? 'Technical Knowledge'
-    : performance.improvementArea?.name === 'problemSolving'
-    ? 'Problem Solving'
-    : performance.improvementArea?.name === 'codeQuality'
-    ? 'Code Quality'
-    : performance.improvementArea?.name === 'confidence'
-    ? 'Confidence'
-    : performance.improvementArea?.name}
-</strong>
+      {performance?.hasData && (
+        <section className="home-performance-section">
 
-        <span>
-          {performance.improvementArea?.score}/100
-        </span>
-      </div>
+          <div className="home-performance-header">
 
+            <div>
 
-      <div className="home-insight-card">
-        <span className="home-insight-label">
-          Recent Trend
-        </span>
+              <div className="home-performance-eyebrow">
+                <BsStars />
+                AI Performance Insights
+              </div>
 
-        <strong>
-          {performance.recentTrend > 0
-            ? `+${performance.recentTrend}`
-            : performance.recentTrend}
-        </strong>
+              <h2 className="home-performance-heading">
+                Your Interview Readiness
+              </h2>
 
-        <span>
-          vs previous interview
-        </span>
-      </div>
+              <p className="home-performance-subtitle">
+                Understand your strengths and identify the
+                areas that need more practice.
+              </p>
 
-    </div>
-
-  </section>
-)}
+            </div>
 
 
-      {/* ================================
+            <div className="home-readiness-score">
+
+              <div className="home-readiness-ring">
+
+                <span className="home-readiness-number">
+                  {performance.readinessScore}
+                </span>
+
+                <span className="home-readiness-out-of">
+                  /100
+                </span>
+
+              </div>
+
+              <span className="home-readiness-text">
+                Readiness Score
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div className="home-performance-insights">
+
+            <div className="home-insight-card">
+
+              <div className="home-insight-card-top">
+                <span className="home-insight-label">
+                  Strongest Skill
+                </span>
+
+                <span className="home-insight-dot home-dot-success"></span>
+              </div>
+
+              <strong>
+                {getSkillName(
+                  performance.strongestSkill?.name
+                )}
+              </strong>
+
+              <span className="home-insight-score">
+                {performance.strongestSkill?.score}/100
+              </span>
+
+            </div>
+
+
+            <div className="home-insight-card">
+
+              <div className="home-insight-card-top">
+                <span className="home-insight-label">
+                  Focus Area
+                </span>
+
+                <span className="home-insight-dot home-dot-warning"></span>
+              </div>
+
+              <strong>
+                {getSkillName(
+                  performance.improvementArea?.name
+                )}
+              </strong>
+
+              <span className="home-insight-score">
+                {performance.improvementArea?.score}/100
+              </span>
+
+            </div>
+
+
+            <div className="home-insight-card">
+
+              <div className="home-insight-card-top">
+                <span className="home-insight-label">
+                  Recent Trend
+                </span>
+
+                <span className="home-insight-dot home-dot-info"></span>
+              </div>
+
+              <strong>
+                {performance.recentTrend > 0
+                  ? `+${performance.recentTrend}`
+                  : performance.recentTrend}
+              </strong>
+
+              <span className="home-insight-score">
+                vs previous interview
+              </span>
+
+            </div>
+
+          </div>
+
+        </section>
+      )}
+
+
+      {/* ==========================================
           RECENT INTERVIEWS
-      ================================= */}
+      ========================================== */}
 
       <section className="home-recent-section">
 
         <div className="home-section-header">
 
           <div>
+
+            <div className="home-section-eyebrow">
+              Interview Activity
+            </div>
+
             <h2 className="home-section-heading">
               Recent Interviews
             </h2>
 
             <p className="home-section-subtitle">
-              Review your latest AI interview sessions
+              Review your latest AI interview sessions.
             </p>
+
           </div>
+
 
           {recentInterviews.length > 0 && (
             <button
@@ -358,6 +457,7 @@ function HomePage() {
               onClick={() => navigate('/history')}
             >
               View All
+              <BsArrowRight />
             </button>
           )}
 
@@ -370,7 +470,7 @@ function HomePage() {
           <div className="home-loading-state">
 
             <div
-              className="spinner-border"
+              className="spinner-border home-loading-spinner"
               role="status"
             >
               <span className="visually-hidden">
@@ -391,7 +491,9 @@ function HomePage() {
         {!loading && recentInterviews.length === 0 && (
           <div className="home-empty-state">
 
-            <BsChatSquareText className="home-empty-icon" />
+            <div className="home-empty-icon-box">
+              <BsChatSquareText />
+            </div>
 
             <h3 className="home-empty-heading">
               Your interview journey starts here
@@ -408,6 +510,7 @@ function HomePage() {
             >
               <BsPlayCircleFill />
               Start Your First Interview
+              <BsArrowRight />
             </button>
 
           </div>

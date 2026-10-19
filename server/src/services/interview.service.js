@@ -11,17 +11,48 @@ import {
   buildConversationHistory,
 } from '../constants/prompts.js';
 
-export const startInterview = async (userId, role, resumeText, candidateName, totalQuestions = 5) => {
-  const questionsPrompt = GENERATE_QUESTIONS_PROMPT(role, resumeText, totalQuestions);
+export const startInterview = async (
+  userId,
+  role,
+  resumeText,
+  candidateName,
+  totalQuestions = 5
+) => {
+  const questionsPrompt = GENERATE_QUESTIONS_PROMPT(
+    role,
+    resumeText,
+    totalQuestions
+  );
+
   const questionsResponse = await askGemini(questionsPrompt);
-  const aiQuestions = parseGeminiJSON(questionsResponse);
+
+  let aiQuestions = parseGeminiJSON(questionsResponse);
+
+  if (!Array.isArray(aiQuestions)) {
+    throw new Error('AI did not return a valid question array');
+  }
+
+  if (aiQuestions.length > totalQuestions - 1) {
+    aiQuestions = aiQuestions.slice(0, totalQuestions - 1);
+  }
+
+  if (aiQuestions.length < totalQuestions - 1) {
+    throw new Error(
+      `AI generated ${aiQuestions.length} questions instead of ${
+        totalQuestions - 1
+      }`
+    );
+  }
 
   const introQuestion = {
     text: 'Tell me about yourself — your background, what you\'re currently working on, and what excites you about this role.',
     type: 'behavioral',
     isCodeQuestion: false,
   };
-  const questions = [introQuestion, ...aiQuestions];
+ const questions = [
+  introQuestion,
+  ...aiQuestions,
+];
 
   const interview = await Interview.create({
     userId,
